@@ -93,7 +93,7 @@ const Checklist = () => {
                         <p className="text-blue-100 text-sm">{item.description}</p>
                       </div>
                     </div>
-                    {item.showGuide && (
+                    {expandedGuides[item.name] && (
                       <div className="mt-4 p-6 bg-white/5 rounded-lg">
                         <pre className="whitespace-pre-wrap text-sm text-blue-50">
                           {item.guide}
