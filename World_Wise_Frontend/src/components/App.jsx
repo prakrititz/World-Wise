@@ -7,6 +7,7 @@ import StepGuide from "./StepGuide";
 import ExportBuddy from "./ExportBuddy";
 import Checklist from "./Checklist";
 import Footer from "./Footer";
+import Dummy from "./Dummy";
 import "./App.css"
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/guide" element={<StepGuide />} />
           <Route path="/ai-companion" element={<ExportBuddy />} />
           <Route path="/checklist" element={<Checklist />} />
+          <Route path="/dummy" element={<Dummy/>} />
         </Routes>
         <Footer />
       </div>
