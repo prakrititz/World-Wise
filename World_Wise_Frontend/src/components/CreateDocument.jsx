@@ -129,13 +129,13 @@ const CreateDocument = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-[#232f3e]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl font-bold text-[#f2f2f2] mb-6">
             Export Document Templates
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-[#f2f2f2] max-w-3xl mx-auto leading-relaxed">
             Access our comprehensive collection of professional export document templates. 
             Streamline your international trade documentation with industry-standard forms.
           </p>
@@ -145,7 +145,7 @@ const CreateDocument = () => {
           {documents.map((doc) => (
             <div 
               key={doc.id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+              className="bg-[#f2f2f2] rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
@@ -163,7 +163,7 @@ const CreateDocument = () => {
                 <p className="text-gray-600 mb-6 text-base leading-relaxed">{doc.description}</p>
                 <button
                   onClick={() => handleDownload(doc.pdfUrl)}
-                  className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full bg-[#ff9900] text-[#000000] py-3 px-4 rounded-lg font-medium hover:bg-[#146eb4] hover:text-[#f2f2f2] transition-colors flex items-center justify-center gap-2 shadow-sm"
                 >
                   <Download className="w-5 h-5" />
                   Download Template

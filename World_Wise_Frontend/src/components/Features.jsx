@@ -10,17 +10,17 @@ const Features = () => {
   ];
 
   return (
-    <div className="bg-gray-50 py-24">
+    <div className="bg-[#232f3e] py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-16 text-[#ff9900]">
           Powerful Features for Global Success
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-              <div className="text-blue-600 mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+            <div key={index} className="bg-[#f2f2f2] p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+              <div className="text-[#146eb4] mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-bold mb-3 text-[#232f3e]">{feature.title}</h3>
+              <p className="text-[#232f3e]/80">{feature.description}</p>
             </div>
           ))}
         </div>
