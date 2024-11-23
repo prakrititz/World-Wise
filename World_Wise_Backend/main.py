@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import google.generativeai as genai
 import logging
-
+from data import checklist_data
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -99,6 +99,9 @@ async def chat_endpoint(message: ChatMessage):
             status_code=500,
             detail=f"An error occurred: {str(e)}"
         )
+@app.get("/checklist")
+async def get_checklist():
+    return {"data": checklist_data}
 
 # Health check endpoint
 @app.get("/health")
