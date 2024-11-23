@@ -76,10 +76,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-24">
+<div className="bg-[#232f3e] py-24">
       <div className="container mx-auto text-center px-4">
-        <h1 className="text-5xl font-extrabold text-white mb-6 leading-tight">
-         Your First Export <span className="text-yellow-400">Simplified.</span>
+        <h1 className="text-5xl font-extrabold text-[#f2f2f2] mb-6 leading-tight">
+         Your First Export <span className="text-[#ff9900]">Simplified.</span>
         </h1>
         <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
           Navigate international exports with confidence. Expert guidance and AI-powered solutions for businesses ready to go global.
@@ -248,21 +248,23 @@ const HeroSection = () => {
         </div>
 
         <div className="space-x-4">
-          <button 
+        <button 
             onClick={() => navigate('/checklist')}
-            className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition duration-300"
+            className="bg-[#ff9900] text-[#000000] px-8 py-3 rounded-full font-bold hover:bg-[#146eb4] hover:text-[#f2f2f2] transition duration-300"
           >
             Get Started
           </button>
-          <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-800 transition duration-300">
+          <button 
+            className="border-2 border-[#f2f2f2] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#146eb4] hover:border-[#146eb4] transition duration-300"
+          >
             Learn More
           </button>
           <button 
-    onClick={() => navigate('/create-document')}
-    className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition duration-300"
-  >
-    Create Export Documents
-  </button>
+            onClick={() => navigate('/create-document')}
+            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+          >
+            Create Export Documents
+          </button>
           
         </div>
       </div>
