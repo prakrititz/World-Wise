@@ -163,8 +163,7 @@ const CreateDocument = () => {
                 <p className="text-gray-600 mb-6 text-base leading-relaxed">{doc.description}</p>
                 <button
                   onClick={() => handleDownload(doc.pdfUrl)}
-                  className="w-full bg-[#ff9900] text-[#000000] py-3 px-4 rounded-lg font-medium hover:bg-[#146eb4] hover:text-[#f2f2f2] transition-colors flex items-center justify-center gap-2 shadow-sm"
-                >
+                  className="w-full bg-[#146eb4] text-[#f2f2f2] py-3 px-4 rounded-lg font-medium hover:bg-[#ff9900] hover:text-[#000000] transition-colors flex items-center justify-center gap-2 shadow-sm"                >
                   <Download className="w-5 h-5" />
                   Download Template
                 </button>
