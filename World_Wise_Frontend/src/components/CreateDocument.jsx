@@ -6,41 +6,41 @@ const documents = [
       id: 1,
       name: "Export Agreement/Proforma Invoice",
       icon: <FileText className="w-8 h-8 text-yellow-400" />,
-      image: "/images/export-agreement-sample.jpg",
+      image: "/images/pdfImages/exportAgreementPerformaInvoice.png",
       description: "Initial agreement outlining terms, prices, and conditions before final invoice",
-      pdfUrl: "/pdfs/export-agreement.pdf"
+      pdfUrl: "/pdfs/export_agreement_proforma_invoice.pdf"
     },
     {
       id: 2,
       name: "Commercial Invoice",
       icon: <Package className="w-8 h-8 text-yellow-400" />,
-      image: "/images/commercial-invoice-sample.jpg",
+      image: "/images/pdfImages/commercialInvoice.png",
       description: "Official invoice stating the value, quantity, and details of exported goods",
-     pdfUrl: "/pdfs/export-agreement.pdf"
+     pdfUrl: "/pdfs/commercial_invoice.pdf"
     },
     {
       id: 3,
       name: "Packing List",
       icon: <Truck className="w-8 h-8 text-yellow-400" />,
-      image: "/images/packing-list-sample.jpg",
+      image: "/images/pdfImages/packingList.png",
       description: "Detailed list of items, quantities, and packaging details for shipment",
-      pdfUrl: "/pdfs/export-agreement.pdf"
+      pdfUrl: "/pdfs/packing_list.pdf"
     },
     {
       id: 4,
       name: "Certificate of Origin",
       icon: <Globe className="w-8 h-8 text-yellow-400" />,
-      image: "/images/certificate-origin-sample.jpg",
+      image: "/images/pdfImages/certificateOfOrigin.png",
       description: "Official document certifying where goods were manufactured or produced",
- pdfUrl: "/pdfs/export-agreement.pdf"
+ pdfUrl: "/pdfs/certificate_of_origin.pdf"
     },
     {
       id: 5,
       name: "Letter of Credit",
       icon: <Shield className="w-8 h-8 text-yellow-400" />,
-      image: "/images/letter-credit-sample.jpg",
+      image: "/images/pdfImages/letterOfCredit.png",
       description: "Bank guarantee ensuring payment upon meeting specified conditions",
-      pdfUrl: "/pdfs/export-agreement.pdf"
+      pdfUrl: "/pdfs/letter_of_credit.pdf"
     },
     {
       id: 6,
@@ -48,7 +48,7 @@ const documents = [
       icon: <FileCheck className="w-8 h-8 text-yellow-400" />,
       image: "/images/pdfImages/billOfLading.png",
       description: "Transport document serving as receipt and title to shipped goods",
-pdfUrl: "/pdfs/bill_of_lading.pdf"
+      pdfUrl: "/pdfs/bill_of_lading.pdf"
     },
     {
       id: 7,
@@ -56,7 +56,7 @@ pdfUrl: "/pdfs/bill_of_lading.pdf"
       icon: <Shield className="w-8 h-8 text-yellow-400" />,
       image: "/images/pdfImages/taxInvoice.png",
       description: "Document showing tax calculations and charges on exported goods",
-pdfUrl: "/pdfs/tax_invoice.pdf"
+      pdfUrl: "/pdfs/tax_invoice.pdf"
     },
     {
       id: 8,
@@ -64,7 +64,7 @@ pdfUrl: "/pdfs/tax_invoice.pdf"
       icon: <FileCheck className="w-8 h-8 text-yellow-400" />,
       image: "/images/pdfImages/InlandBillOfLading.png",
       description: "Transport document for domestic land-based shipment of goods",
-    pdfUrl: "/pdfs/Inland_Bill_of_Lading.pdf"
+      pdfUrl: "/pdfs/inland_bill_of_lading.pdf"
     },
     {
       id: 9,
@@ -72,7 +72,7 @@ pdfUrl: "/pdfs/tax_invoice.pdf"
       icon: <Shield className="w-8 h-8 text-yellow-400" />,
       image: "/images/pdfImages/OceanBillOfLading.png",
       description: "Maritime transport document for international sea freight",
-      pdfUrl: "/pdfs/Ocean_Bill_of_Lading.pdf"
+      pdfUrl: "/pdfs/ocean_bill_of_lading.pdf"
     },
     {
       id: 10,
@@ -80,7 +80,7 @@ pdfUrl: "/pdfs/tax_invoice.pdf"
       icon: <FileText className="w-8 h-8 text-yellow-400" />,
       image: "/images/pdfImages/DockReceipt.png",
       description: "Proof of delivery of goods to the shipping terminal or dock",
-pdfUrl: "/pdfs/Dock_Receipt.pdf"
+      pdfUrl: "/pdfs/dock_receipt.pdf"
     },
     {
       id: 11,
@@ -88,7 +88,7 @@ pdfUrl: "/pdfs/Dock_Receipt.pdf"
       icon: <FileCheck className="w-8 h-8 text-yellow-400" />,
       image: "/images/pdfImages/AirwayBill.png",
       description: "Air transport document and receipt for goods shipped by air freight",
-     pdfUrl: "/pdfs/export-agreement.pdf"
+      pdfUrl: "/pdfs/air_waybill.pdf"
     }
   ];
   
@@ -116,12 +116,14 @@ const ImagePreview = ({ image, onClose }) => {
 const CreateDocument = () => {
   const [previewImage, setPreviewImage] = useState(null);
   const handleDownload = (documentName) => {
+    console.log(documentName);
     const baseUrl = window.location.origin;
-    const fullPath = `${baseUrl}/pdfs/${documentName.toLowerCase().replace(/\s+/g, '-')}.pdf`;
+    const fullPath = `${baseUrl}${documentName}`;
+    console.log(fullPath);
   
     const link = document.createElement('a');
     link.href = fullPath;
-    link.download = `${documentName.toLowerCase().replace(/\s+/g, '-')}.pdf`;
+    link.download = `${documentName.toLowerCase().replace(/\s+/g, '_')}`;
     
     document.body.appendChild(link);
     link.click();
@@ -158,7 +160,7 @@ const CreateDocument = () => {
                 <h3 className="text-xl font-bold text-white mb-3">{doc.name}</h3>
                 <p className="text-gray-200 mb-6">{doc.description}</p>
                 <button
-                  onClick={() => handleDownload(doc.name)}
+                  onClick={() => handleDownload(doc.pdfUrl)}
                   className="w-full bg-yellow-400 text-blue-900 py-3 rounded-lg font-medium hover:bg-yellow-300 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                 >
                   <Download className="w-5 h-5" />

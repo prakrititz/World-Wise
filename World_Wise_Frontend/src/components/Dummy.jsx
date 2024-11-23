@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy, CheckCircle2, Lock, X, ChevronRight, Award } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-
+import { useNavigate } from 'react-router-dom';
 
 // Checklist Data
 // PathStep Component
@@ -46,6 +46,7 @@ const PathStep = ({ index, title, isCompleted, isActive, onClick, totalSteps }) 
 
 // StepModal Component
 const StepModal = ({ step, onClose, onComplete, stepNumber, totalSteps }) => {
+  const navigate = useNavigate();
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-40">
       <div className="bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl max-w-2xl w-full mx-4 shadow-2xl transform transition-all duration-300">
@@ -65,7 +66,18 @@ const StepModal = ({ step, onClose, onComplete, stepNumber, totalSteps }) => {
 
         {/* Content */}
         <div className="p-6 max-h-[70vh] overflow-y-auto">
-          <p className="text-gray-300 mb-8">{step.description}</p>
+  <p className="text-gray-300 mb-8">{step.description}</p>
+
+  <div className="flex justify-between items-center mb-6">
+    <h3 className="text-xl font-bold text-white">Step-by-Step Guide</h3>
+    <button
+      onClick={() => navigate(`/detailed-guide/${step.name}`)}
+      className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-medium hover:bg-yellow-300 transition-all flex items-center gap-2"
+    >
+      <span>Detailed Guide</span>
+      <ChevronRight className="w-4 h-4" />
+    </button>
+  </div>
 
           {step.guide?.map((section, idx) => (
             <div 

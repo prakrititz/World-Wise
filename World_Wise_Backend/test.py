@@ -60,8 +60,8 @@ def predict_risk(country_name, model, processed_data, threshold=80):
     return risk[0]
 
 
-# Example usage
-country_name = 'United arab emirates'  # Replace with any country name
-risk = predict_risk(country_name, model, processed_data)
-if risk is not None:
-    print(f"The predicted risk for {country_name} is: {risk}")
+# # Example usage
+# country_name = 'United arab emirates'  # Replace with any country name
+# risk = predict_risk(country_name, model, processed_data)
+# if risk is not None:
+#     print(f"The predicted risk for {country_name} is: {risk}")
