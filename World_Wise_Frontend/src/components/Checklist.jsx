@@ -4,21 +4,7 @@ import ReactMarkdown from 'react-markdown';
 
 // Checklist Data
 
-const [checklistData, setChecklistData] = useState([]);
 
-useEffect(() => {
-  const fetchChecklistData = async () => {
-    try {
-      const response = await fetch('http://localhost:8000/checklist');
-      const result = await response.json();
-      setChecklistData(result.data);
-    } catch (error) {
-      console.error('Error fetching checklist data:', error);
-    }
-  };
-
-  fetchChecklistData();
-}, []);
 // PathStep Component
 const PathStep = ({ index, title, isCompleted, isActive, onClick, totalSteps }) => {
   const isLocked = index > 0 && !isCompleted;
@@ -194,6 +180,21 @@ function Checklist() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollContainerRef = useRef(null);
   const stepsContainerRef = useRef(null);
+  const [checklistData, setChecklistData] = useState([]);
+
+useEffect(() => {
+  const fetchChecklistData = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/checklist');
+      const result = await response.json();
+      setChecklistData(result.data);
+    } catch (error) {
+      console.error('Error fetching checklist data:', error);
+    }
+  };
+
+  fetchChecklistData();
+}, []);
 
   // Flatten all items into a single array for the path
   const allSteps = checklistData.flatMap(section => 

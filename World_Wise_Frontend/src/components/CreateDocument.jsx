@@ -116,12 +116,13 @@ const ImagePreview = ({ image, onClose }) => {
 const CreateDocument = () => {
   const [previewImage, setPreviewImage] = useState(null);
   const handleDownload = (documentName) => {
+    console.log(documentName);
     const baseUrl = window.location.origin;
-    const fullPath = `${baseUrl}/pdfs/${documentName.toLowerCase().replace(/\s+/g, '-')}.pdf`;
+    const fullPath = `${baseUrl}/pdfs/${documentName.toLowerCase().replace(/\s+/g, '_')}.pdf`;
   
     const link = document.createElement('a');
     link.href = fullPath;
-    link.download = `${documentName.toLowerCase().replace(/\s+/g, '-')}.pdf`;
+    link.download = `${documentName.toLowerCase().replace(/\s+/g, '_')}.pdf`;
     
     document.body.appendChild(link);
     link.click();
