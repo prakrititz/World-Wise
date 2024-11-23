@@ -18,7 +18,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+ 
 # Configure Gemini
 try:
     genai.configure(api_key="AIzaSyAQwgGMrY-Ez-02A4Dn7t2X2dRbTgD27QQ")

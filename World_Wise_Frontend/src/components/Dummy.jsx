@@ -216,6 +216,7 @@ function App() {
   
   
     const formatMessage = (content) => {
+      console.log(messages);
     return (
       <ReactMarkdown 
         className="prose prose-sm prose-invert max-w-none"

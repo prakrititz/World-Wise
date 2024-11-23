@@ -8,6 +8,7 @@ import ExportBuddy from "./ExportBuddy";
 import Checklist from "./Checklist";
 import Footer from "./Footer";
 import Dummy from "./Dummy";
+import CreateDocument from "./CreateDocument";
 import "./App.css"
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/ai-companion" element={<ExportBuddy />} />
           <Route path="/checklist" element={<Checklist />} />
           <Route path="/dummy" element={<Dummy/>} />
+          <Route path = "/create-document" element =  {<CreateDocument/>}/>
         </Routes>
         <Footer />
       </div>

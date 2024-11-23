@@ -257,6 +257,13 @@ const HeroSection = () => {
           <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-800 transition duration-300">
             Learn More
           </button>
+          <button 
+    onClick={() => navigate('/create-document')}
+    className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition duration-300"
+  >
+    Create Export Documents
+  </button>
+          
         </div>
       </div>
     </div>

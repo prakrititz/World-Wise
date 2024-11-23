@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .header {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .box {
+            border: 1px solid #000;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .barcode-space {
+            height: 60px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            border: 1px dashed #666;
+        }
+        .signature-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .signature-line {
+            border-top: 1px solid #000;
+            margin-top: 20px;
+            padding-top: 5px;
+        }
+        .stamp-box {
+            border: 1px dashed #000;
+            padding: 20px;
+            margin: 10px 0;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>BILL OF LADING / LORRY RECEIPT</h1>
+        <div style="text-align: right;">
+            <p>Date: 23-November-2024</p>
+            <p>LR/BOL No: _____________</p>
+            <p>GSTIN: _________________</p>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="box">
+            <h3>CONSIGNOR (Sender)</h3>
+            <p>Name: ________________________</p>
+            <p>Address: ______________________</p>
+            <p>City/State/PIN: ________________</p>
+            <p>GSTIN: _______________________</p>
+            <p>Contact No: ___________________</p>
+            <p>Email: ________________________</p>
+        </div>
+        <div class="box">
+            <h3>CONSIGNEE (Receiver)</h3>
+            <p>Name: ________________________</p>
+            <p>Address: ______________________</p>
+            <p>City/State/PIN: ________________</p>
+            <p>GSTIN: _______________________</p>
+            <p>Contact No: ___________________</p>
+            <p>Email: ________________________</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3>BILLING DETAILS</h3>
+        <div class="grid">
+            <div>
+                <p>Invoice No: __________________</p>
+                <p>E-way Bill No: ________________</p>
+                <p>Value of Goods: ₹____________</p>
+            </div>
+            <div>
+                <p>Payment Terms:</p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox"> To Pay</label>
+                    <label><input type="checkbox"> Paid</label>
+                    <label><input type="checkbox"> FOB</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3>VEHICLE DETAILS</h3>
+        <div class="grid">
+            <div>
+                <p>Vehicle No: __________________</p>
+                <p>Driver Name: _________________</p>
+                <p>Driver Mobile: ________________</p>
+            </div>
+            <div>
+                <p>Driver License No: ____________</p>
+                <p>Vehicle Type: ________________</p>
+                <p>Route: ______________________</p>
+            </div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Description of Goods</th>
+                <th>No. of Packages</th>
+                <th>Package Type</th>
+                <th>Actual Weight (kg)</th>
+                <th>Chargeable Weight (kg)</th>
+                <th>Rate per kg/unit (₹)</th>
+                <th>Amount (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>Total</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="box">
+        <h3>CHARGES DETAILS</h3>
+        <div class="grid">
+            <div>
+                <p>Freight Charges: ₹___________</p>
+                <p>Loading Charges: ₹___________</p>
+                <p>Unloading Charges: ₹_________</p>
+            </div>
+            <div>
+                <p>GST (___%): ₹______________</p>
+                <p>Other Charges: ₹____________</p>
+                <p>Total Amount: ₹____________</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3>INSURANCE DETAILS</h3>
+        <p>Insurance Company: ________________</p>
+        <p>Policy No: _______________________</p>
+        <p>Valid Until: ______________________</p>
+    </div>
+
+    <div class="box">
+        <h3>DELIVERY INSTRUCTIONS</h3>
+        <textarea style="width: 100%; height: 60px;"></textarea>
+    </div>
+
+    <div class="signature-section">
+        <div>
+            <div class="stamp-box">
+                Space for Company Stamp
+            </div>
+        </div>
+        <div>
+            <div class="signature-line">
+                <p>Consignor's Signature with Stamp</p>
+            </div>
+            <div class="signature-line">
+                <p>Carrier's Signature with Stamp</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h4>Terms and Conditions:</h4>
+        <small>
+            <ol>
+                <li>This consignment is accepted subject to the standard terms and conditions of carriage.</li>
+                <li>Goods are being transported at owner's risk.</li>
+                <li>Claims, if any, should be filed within 30 days of delivery.</li>
+                <li>Insurance of goods is sender's responsibility.</li>
+                <li>E-way bill is mandatory for interstate transportation as per GST rules.</li>
+                <li>This document is subject to jurisdiction of courts in India only.</li>
+            </ol>
+        </small>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <p><small>This is a computer generated document and requires no signature if generated with a valid consignment number.</small></p>
+    </div>
+</body>
+</html>

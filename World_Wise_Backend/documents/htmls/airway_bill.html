@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Indian Air Waybill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .document-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .document-subtitle {
+            font-size: 12px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .field-group {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .field-group.wide {
+            grid-column: span 2;
+        }
+        .field-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        .field-value {
+            font-size: 14px;
+            min-height: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .notice {
+            font-size: 11px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .footer {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        .signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .signature-line {
+            border-top: 1px solid #000;
+            margin-top: 25px;
+            padding-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="document-title">
+            <span>INDIAN AIR WAYBILL</span>
+            <span>Not Negotiable</span>
+        </div>
+        <div class="document-subtitle">Copies 1, 2 and 3 of this Air Waybill are originals and have the same validity</div>
+    </div>
+
+    <div class="grid-container">
+        <div class="field-group">
+            <div class="field-label">Shipper's Name and Address</div>
+            <div class="field-value"></div>
+            <div class="field-label">Shipper's Account Number</div>
+            <div class="field-value"></div>
+            <div class="field-label">GSTIN</div>
+            <div class="field-value"></div>
+        </div>
+        
+        <div class="field-group">
+            <div class="field-label">Consignee's Name and Address</div>
+            <div class="field-value"></div>
+            <div class="field-label">Consignee's Account Number</div>
+            <div class="field-value"></div>
+            <div class="field-label">GSTIN</div>
+            <div class="field-value"></div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Issuing Carrier's Agent Name and City</div>
+            <div class="field-value"></div>
+            <div class="field-label">Agent's IATA Code</div>
+            <div class="field-value"></div>
+            <div class="field-label">DGCA Registration No.</div>
+            <div class="field-value"></div>
+        </div>
+
+        <div class="field-group wide">
+            <div class="field-label">KYC Details</div>
+            <table>
+                <tr>
+                    <th>Document Type</th>
+                    <th>Document Number</th>
+                </tr>
+                <tr>
+                    <td>PAN Card</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Aadhar Card</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Origin Airport</div>
+            <div class="field-value"></div>
+            <div class="field-label">Destination Airport</div>
+            <div class="field-value"></div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Flight Details</div>
+            <div class="field-value"></div>
+            <div class="field-label">Flight Date</div>
+            <div class="field-value"></div>
+        </div>
+
+        <div class="field-group wide">
+            <div class="field-label">Routing and Destination</div>
+            <table>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Carrier</th>
+                    <th>Flight No.</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Currency</div>
+            <div class="field-value">INR</div>
+            <div class="field-label">Exchange Rate</div>
+            <div class="field-value"></div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Declared Value for Customs (INR)</div>
+            <div class="field-value"></div>
+            <div class="field-label">Insurance Amount (INR)</div>
+            <div class="field-value"></div>
+        </div>
+
+        <div class="field-group wide">
+            <div class="field-label">GST Details</div>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                    <th>HSN Code</th>
+                </tr>
+                <tr>
+                    <td>CGST</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>SGST</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>IGST</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No. of Pieces</th>
+                <th>Gross Weight (kg)</th>
+                <th>Rate Class</th>
+                <th>Commodity Code</th>
+                <th>Chargeable Weight</th>
+                <th>Rate/kg</th>
+                <th>Total (INR)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="height: 100px">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="grid-container">
+        <div class="field-group">
+            <div class="field-label">Charges Summary</div>
+            <table>
+                <tr>
+                    <td>Basic Freight</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fuel Surcharge</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Security Surcharge</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>GST</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Total Amount (INR)</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Payment Details</div>
+            <table>
+                <tr>
+                    <td>Payment Mode</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Transaction ID</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Payment Date</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="notice">
+        This shipment is handled subject to the conditions of carriage and other applicable rules and regulations of the Directorate General of Civil Aviation (DGCA), India. The liability of the carrier is limited by the Carriage by Air Act, 1972 and rules made thereunder.
+    </div>
+
+    <div class="footer">
+        <div class="field-group wide">
+            <div class="field-label">Shipper's Declaration</div>
+            <p style="font-size: 12px;">
+                I/We declare that the information provided in this Air Waybill is true and correct. The goods do not contain any dangerous articles prohibited by IATA regulations. I/We agree to the conditions of carriage and tariffs of the carrier.
+            </p>
+        </div>
+        <div class="signatures">
+            <div>
+                <div class="signature-line">Shipper's Signature with Company Seal</div>
+            </div>
+            <div>
+                <div class="signature-line">Carrier's Signature with Stamp</div>
+            </div>
+        </div>
+        <div class="field-group">
+            <div class="field-label">Date and Place of Execution</div>
+            <div class="field-value"></div>
+        </div>
+    </div>
+</body>
+</html>
