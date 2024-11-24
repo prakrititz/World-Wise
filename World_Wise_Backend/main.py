@@ -45,12 +45,13 @@ class IncentiveQuery(BaseModel):
 
 app.add_middleware(
     SessionMiddleware,
-    secret_key=config("SECRET_KEY") # Change this to a secure secret key
+    secret_key=config("SECRET_KEY") ,# Change this to a secure secret key
+    max_age = 3600
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173","https://world-wise-mu-ten.vercel.app/"],
+    allow_origins=["http://localhost:5176"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -70,7 +71,7 @@ class IncentiveQuery(BaseModel):
 
 GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
-FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:5173')
+FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:5176')
 GOOGLE_GEMINI_KEY = config("GOOGLE_GEMINI_KEY")
 # OAuth setup
 oauth = OAuth()
