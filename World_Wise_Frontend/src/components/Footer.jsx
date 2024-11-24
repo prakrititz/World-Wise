@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-[#232f3e] text-[#f2f2f2] py-6">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
+      <div className="container mx-auto px-3">
+        <div className="flex justify-around items-center">
           <div>
             <h3 className="text-[#ff9900] font-bold text-xl mb-2">World Wise</h3>
             <p className="text-[#f2f2f2]">&copy; 2024 All Rights Reserved.</p>

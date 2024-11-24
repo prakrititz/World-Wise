@@ -6,10 +6,11 @@ import Features from "./Features";
 import StepGuide from "./StepGuide";
 import ExportBuddy from "./ExportBuddy";
 import Footer from "./Footer";
-import Dummy from "./Dummy";
+import Checklist from "./Checklist";
 import CreateDocument from "./CreateDocument";
 import DetailedGuide from "./DetailedGuide";
 import AiPredictionML from "./AiPredictionML";
+import Dummy from "./DummyA";
 import "./App.css"
 
 const App = () => {
@@ -21,10 +22,11 @@ const App = () => {
           <Route path="/" element={<><HeroSection /><Features /></>} />
           <Route path="/guide" element={<StepGuide />} />
           <Route path="/ai-companion" element={<ExportBuddy />} />
-          <Route path="/dummy" element={<Dummy/>} />
+          <Route path="/checklist" element={<Checklist/>} />
           <Route path="/create-document" element={<CreateDocument/>} />
           <Route path="/detailed-guide/:stepName" element={<DetailedGuide />} />
           <Route path="/risk-analysis" element={<AiPredictionML />} />
+          <Route path="/dummy" element={<Dummy/>} />
         </Routes>
         <Footer />
       </div>
