@@ -12,7 +12,8 @@ import DetailedGuide from "./DetailedGuide";
 import AiPredictionML from "./AiPredictionML";
 import "./App.css"
 import IncentiveFinder from "./incentivefinder";
-
+import Summarize from "./Summarize";
+import Negotiation from './Negotiation';
 
 const App = () => {
   return (
@@ -22,12 +23,14 @@ const App = () => {
         <Routes>
           <Route path="/" element={<><HeroSection /><Features /></>} />
           <Route path="/guide" element={<StepGuide />} />
-          <Route path="/ai-companion" element={<ExportBuddy />} />
+         { /*<Route path="/ai-companion" element={<ExportBuddy />} />*/}
           <Route path="/checklist" element={<Checklist/>} />
           <Route path="/create-document" element={<CreateDocument/>} />
           <Route path="/detailed-guide/:stepName" element={<DetailedGuide />} />
           <Route path="/risk-analysis" element={<AiPredictionML />} />
           <Route path="/incentives" element={<IncentiveFinder />} />
+          <Route path="/summarize" element={<Summarize />} />
+          <Route path="/negotiation" element={<Negotiation />} />
         </Routes>
         <Footer />
       </div>

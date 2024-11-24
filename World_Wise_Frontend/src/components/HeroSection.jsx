@@ -76,14 +76,11 @@ const HeroSection = () => {
   }, []);
 
   return (
-<div className="bg-[#232f3e] py-24">
-      <div className="container mx-auto text-center px-4">
-        <h1 className="text-5xl font-extrabold text-[#f2f2f2] mb-6 leading-tight">
-         Your First Export <span className="text-[#ff9900]">Simplified.</span>
-        </h1>
-        <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-          Navigate international exports with confidence. Expert guidance and AI-powered solutions for businesses ready to go global.
-        </p>
+    <div className="bg-[#232f3e] py-24">
+    <div className="container mx-auto text-center px-4">
+      <h1 className="text-5xl font-extrabold text-[#f2f2f2] mb-6 leading-tight">
+        Your First Export <span className="text-[#ff9900]">Simplified.</span>
+      </h1>
         
         <div className="Container max-w-4xl mx-auto mb-12">
           <div className="Map-container">
@@ -246,37 +243,76 @@ const HeroSection = () => {
            
           </nav>
         </div>
-
-        <div className="space-x-4">
-        <button 
-            onClick={() => navigate('/checklist')}
-            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
-          >
-            PathWise Guidance
-          </button>
-          <button 
-            onClick={() => navigate('/risk-analysis')}
-            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
-          >
-            Risk Calculation
-          </button>
-          <button 
-            onClick={() => navigate('/create-document')}
-            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
-          >
-            Export Documents Templates
-          </button>
-          <button 
-            onClick={() => navigate('/incentives')}
-            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
-          >
-            Get Incentives
-          </button>
+        <div className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto space-y-6">
+        <p>
+          Navigating India's export landscape can be overwhelming. With over 70+ documents, 15+ government portals, and complex compliance requirements, many businesses struggle to start their export journey.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left text-lg mt-12">
+          <div className="bg-[#1a2634] p-6 rounded-xl">
+            <h3 className="text-[#ff9900] font-bold mb-3">Current Challenges</h3>
+            <ul className="space-y-2 text-[#f2f2f2]">
+              <li>• Complex documentation across multiple departments</li>
+              <li>• Expensive consulting fees (₹50,000 - ₹2,00,000)</li>
+              <li>• Time-consuming manual processes</li>
+              <li>• Risk of non-compliance penalties</li>
+              <li>• Limited access to export incentives</li>
+            </ul>
+          </div>
           
+          <div className="bg-[#1a2634] p-6 rounded-xl">
+            <h3 className="text-[#ff9900] font-bold mb-3">World Wise Solution</h3>
+            <ul className="space-y-2 text-[#f2f2f2]">
+              <li>• Step-by-step guided documentation</li>
+              <li>• AI-powered document assistance</li>
+              <li>• Real-time compliance checking</li>
+              <li>• Automated risk assessment</li>
+              <li>• Comprehensive incentive discovery</li>
+            </ul>
+          </div>
         </div>
       </div>
+        <div className="space-x-4 flex flex-wrap justify-center gap-4">
+        <button 
+          onClick={() => navigate('/checklist')}
+          className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+        >
+          PathWise Guidance
+        </button>
+        <button 
+          onClick={() => navigate('/risk-analysis')}
+          className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+        >
+          Risk Calculation
+        </button>
+        <button 
+          onClick={() => navigate('/create-document')}
+          className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+        >
+          Export Documents Templates
+        </button>
+        <button 
+          onClick={() => navigate('/incentives')}
+          className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+        >
+          Get Incentives
+        </button>
+        <button 
+          onClick={() => navigate('/summarize')}
+          className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+        >
+          Summmarize Documents
+        </button>
+        <button 
+          onClick={() => navigate('/negotiation')}
+          className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+        >
+          Negotiation Coach
+        </button>
+      </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default HeroSection;

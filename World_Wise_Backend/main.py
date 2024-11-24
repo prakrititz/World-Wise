@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException,File,UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import google.generativeai as genai
@@ -10,6 +10,19 @@ import joblib
 from fuzzywuzzy import process
 from test import *
 from incentive_finder import IncentiveFinder
+from fastapi import FastAPI, Request, HTTPException, status
+from fastapi.responses import RedirectResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from starlette.config import Config
+from starlette.middleware.sessions import SessionMiddleware
+from authlib.integrations.starlette_client import OAuth
+from document_summarizer import DocumentSummarizer
+from negotiation import *
+import uvicorn
+from typing import Optional
+import json
+
+
 modelRisk_path = 'export_risk_model.joblib'
 modelRisk = joblib.load(modelRisk_path)
 
@@ -22,13 +35,18 @@ processed_data = pd.read_csv(aggregated_data_path)
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
+config = Config('.env')
 app = FastAPI()
 class GuideRequest(BaseModel):
     step_name: str
 # Configure CORS
 class IncentiveQuery(BaseModel):
     query: str
+
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=config("SECRET_KEY") # Change this to a secure secret key
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -38,9 +56,106 @@ app.add_middleware(
     allow_headers=["*"],
 )
  
+class SummarizeQuery(BaseModel):
+    file: UploadFile = File(...)
+
+class NegotiationRequest(BaseModel):
+    currentOffer: str
+    targetPrice: str
+    role: str
+    context: str
+
+class IncentiveQuery(BaseModel):
+    query: str
+
+GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
+FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:5173')
+GOOGLE_GEMINI_KEY = config("GOOGLE_GEMINI_KEY")
+# OAuth setup
+oauth = OAuth()
+oauth.register(
+    name='google',
+    client_id=GOOGLE_CLIENT_ID,
+    client_secret=GOOGLE_CLIENT_SECRET,
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_kwargs={
+        'scope': 'openid email profile'
+    }
+)
+
+@app.get('/api/auth/google')
+async def google_login(request: Request):
+    """Initiate Google OAuth login"""
+    redirect_uri = request.url_for('auth_callback')
+    return await oauth.google.authorize_redirect(request, redirect_uri)
+
+@app.get('/api/auth/callback')
+async def auth_callback(request: Request):
+    """Handle the Google OAuth callback"""
+    try:
+        token = await oauth.google.authorize_access_token(request)
+        
+        # Get user info from Google
+        user = token.get('userinfo')
+        if user:
+            # Store user info in session
+            user_data = {
+                'id': user.get('sub'),
+                'email': user.get('email'),
+                'name': user.get('name'),
+                'picture': user.get('picture'),
+                'email_verified': user.get('email_verified')
+            }
+            request.session['user'] = user_data
+            
+            # Redirect to frontend with success
+            return RedirectResponse(
+                url=f"{FRONTEND_URL}?auth=success&user={json.dumps(user_data)}",
+                status_code=status.HTTP_302_FOUND
+            )
+        
+        return RedirectResponse(
+            url=f"{FRONTEND_URL}?auth=error&message=Failed to get user info",
+            status_code=status.HTTP_302_FOUND
+        )
+        
+    except Exception as e:
+        print(f"Authentication error: {str(e)}")
+        return RedirectResponse(
+            url=f"{FRONTEND_URL}?auth=error&message={str(e)}",
+            status_code=status.HTTP_302_FOUND
+        )
+
+@app.get('/api/auth/user')
+async def get_current_user(request: Request):
+    """Get the current authenticated user"""
+    user = request.session.get('user')
+    if user:
+        return user
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Not authenticated"
+    )
+
+@app.post('/api/auth/logout')
+async def logout(request: Request):
+    """Logout the current user"""
+    request.session.pop('user', None)
+    return {"message": "Logged out successfully"}
+
+@app.get('/api/auth/check')
+async def check_auth(request: Request):
+    """Check if user is authenticated"""
+    user = request.session.get('user')
+    return {
+        "authenticated": user is not None,
+        "user": user
+    }
+    
 # Configure Gemini
 try:
-    genai.configure(api_key="AIzaSyAQwgGMrY-Ez-02A4Dn7t2X2dRbTgD27QQ")
+    genai.configure(api_key=GOOGLE_GEMINI_KEY)
     model = genai.GenerativeModel('gemini-pro')
 except Exception as e:
     logger.error(f"Failed to initialize Gemini: {e}")
@@ -152,7 +267,7 @@ class RiskAnalysisRequest(BaseModel):
 @app.post("/incentives")
 async def get_incentives(query: IncentiveQuery):
     try:
-        finder = IncentiveFinder("AIzaSyAQwgGMrY-Ez-02A4Dn7t2X2dRbTgD27QQ")
+        finder = IncentiveFinder(GOOGLE_GEMINI_KEY)
         result = finder.find_incentives(query.query)
         return {"response": result}
     except Exception as e:
@@ -297,7 +412,43 @@ async def chat_endpoint(message: ChatMessage):
 async def get_checklist():
     return {"data": checklist_data}
 
+@app.post("/summarize")
+async def summarize_docs(file: UploadFile = File(...)):
+    try:
+        finder = DocumentSummarizer(config("GROQ_API_KEY"))
+        result = finder.process_document(file)
+        return {"response": result}
+    except Exception as e:
+        logger.error(f"Error in incentives endpoint: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"An error occurred: {str(e)}"
+        )
 
+@app.post("/negotiation")
+async def get_negotiation_strategy(request: NegotiationRequest):
+    try:
+        coach = NegotiationCoach()  # Remove the API key from constructor
+        
+        current_offer = float(request.currentOffer)
+        target_price = float(request.targetPrice)
+        
+        result = coach.suggest_counter_offer(
+            current_offer=current_offer,
+            target_price=target_price,
+            iam=request.role,
+            negotiation_context=request.context
+        )
+        
+        logger.info(f"Negotiation response generated: {result}")
+        return result
+        
+    except ValueError as ve:
+        logger.error(f"Value error in negotiation: {ve}")
+        raise HTTPException(status_code=400, detail="Invalid numeric values provided")
+    except Exception as e:
+        logger.error(f"Error in negotiation endpoint: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # Health check endpoint

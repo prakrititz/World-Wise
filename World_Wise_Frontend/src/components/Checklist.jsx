@@ -124,7 +124,7 @@ const StepModal = ({ step, onClose, onComplete, stepNumber, totalSteps }) => {
 };
 
 // Main App Component
-function App() {
+function Checklist() {
   const [currentStep, setCurrentStep] = useState(null);
   const [completedSteps, setCompletedSteps] = useState(new Set());
   const [showCongrats, setShowCongrats] = useState(false);
@@ -431,4 +431,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Checklist;

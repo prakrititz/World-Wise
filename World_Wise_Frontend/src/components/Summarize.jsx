@@ -1,28 +1,32 @@
-import React, { useState } from 'react';
-import { Search, HelpCircle, Info, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Upload, FileText, ArrowLeft, Info } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 
-const IncentiveFinder = () => {
-  const [query, setQuery] = useState('');
+const Summarize = () => {
+  const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    const formData = new FormData();
+    formData.append('file', file);
+
     try {
-      const response = await fetch('http://localhost:8000/incentives', {
+      const response = await fetch('http://localhost:8000/summarize', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query })
+        body: formData
       });
 
       const data = await response.json();
-      setResult(data.response);
+      setResult(data.response.summary);
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -42,56 +46,58 @@ const IncentiveFinder = () => {
 
         <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-xl mb-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-white mb-4">
-              Export Incentives Finder
-            </h1>
+            <div className="flex items-center gap-4 mb-4">
+              <FileText className="w-10 h-10 text-[#ff9900]" />
+              <h1 className="text-4xl font-bold text-white">Smart Document Summarizer</h1>
+            </div>
             <p className="text-lg text-white/80">
-              Discover optimal government schemes and incentives for your export business
+              Simplify your export documentation process with AI-powered summaries
             </p>
           </div>
 
           <div className="bg-[#ff9900]/10 border border-[#ff9900]/20 rounded-xl p-6 mb-8">
             <div className="flex items-start gap-3">
-              <Info className="h-6 w-6 text-[#ff9900] mt-1 flex-shrink-0" />
-              <p className="text-white/90">
-                Our AI-powered tool analyzes various government export schemes and matches them with your products and business needs. Get personalized recommendations and answers to your questions about export incentives.
-              </p>
+              <Info className="w-6 h-6 text-[#ff9900] mt-1 flex-shrink-0" />
+              <div className="space-y-4 text-white/90">
+                <p>
+                  Export documentation can be overwhelming, with multiple lengthy documents requiring careful review:
+                </p>
+                <ul className="list-none space-y-2">
+                  {[
+                    'Complex trade agreements spanning hundreds of pages',
+                    'Detailed regulatory compliance documents',
+                    'Extensive shipping and customs documentation',
+                    'Multiple government scheme guidelines',
+                    'International trade policies and procedures'
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#ff9900]"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p>
+                  Our AI-powered summarizer helps you extract key information quickly and efficiently.
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div className="mb-8 text-white/80">
-            <p className="mb-3 text-lg">You can:</p>
-            <ul className="list-none space-y-2">
-              {[
-                'Search for specific product-related incentives',
-                'Ask about eligibility criteria and documentation',
-                'Learn about application processes and deadlines',
-                'Get clarification on scheme benefits and requirements'
-              ].map((item, index) => (
-                <li key={index} className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#ff9900]"></span>
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <form onSubmit={handleSubmit} className="mb-8">
             <div className="flex gap-4">
               <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="E.g., 'What incentives are available for textile exports?' or 'How do I apply for RODTEP scheme?'"
-                className="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#ff9900] focus:border-transparent"
+                type="file"
+                onChange={(e) => setFile(e.target.files[0])}
+                accept=".txt,.doc,.docx,.pdf"
+                className="flex-1 px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-[#ff9900] file:text-[#232f3e] file:font-semibold hover:file:bg-[#ff9900]/90 file:transition-colors cursor-pointer"
               />
               <button
                 type="submit"
-                disabled={loading}
+                disabled={!file || loading}
                 className="px-8 py-4 bg-[#ff9900] text-[#232f3e] rounded-xl font-bold hover:bg-[#ff9900]/90 transition-all transform hover:scale-105 flex items-center gap-2 disabled:opacity-50"
               >
-                <Search className="w-5 h-5" />
-                Find Incentives
+                <Upload className="w-5 h-5" />
+                Summarize Document
               </button>
             </div>
           </form>
@@ -104,7 +110,7 @@ const IncentiveFinder = () => {
 
           {result && (
             <div className="bg-white/10 rounded-xl p-8">
-              <h2 className="text-2xl font-bold text-[#ff9900] mb-6">Results</h2>
+              <h2 className="text-2xl font-bold text-[#ff9900] mb-6">Document Summary</h2>
               <ReactMarkdown
                 className="prose prose-invert max-w-none"
                 components={{
@@ -135,20 +141,10 @@ const IncentiveFinder = () => {
               </ReactMarkdown>
             </div>
           )}
-
-          <div className="mt-8 bg-white/5 rounded-xl p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <HelpCircle className="h-5 w-5 text-[#ff9900]" />
-              <h2 className="text-lg font-bold text-[#ff9900]">Need Help?</h2>
-            </div>
-            <p className="text-white/80">
-              Try asking about specific schemes like MEIS, RODTEP, or RoSCTL, or ask about incentives for your industry sector. You can also inquire about documentation requirements, application procedures, or eligibility criteria.
-            </p>
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default IncentiveFinder;
+export default Summarize;
