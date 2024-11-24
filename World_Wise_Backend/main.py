@@ -71,7 +71,7 @@ class IncentiveQuery(BaseModel):
 
 GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
-FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:5176')
+FRONTEND_URL = config('FRONTEND_URL')
 GOOGLE_GEMINI_KEY = config("GOOGLE_GEMINI_KEY")
 # OAuth setup
 oauth = OAuth()
