@@ -19,6 +19,8 @@ import {
   Globe,
 } from "lucide-react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const ExportDashboard = () => {
   const [exchangeRates, setExchangeRates] = useState([]);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");

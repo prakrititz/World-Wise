@@ -135,11 +135,11 @@ function Checklist() {
   const [completedItems, setCompletedItems] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [checklistData, setChecklistData] = useState([]);
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     const fetchChecklistData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/checklist');
-        const result = await response.json();
+        const response = await fetch(`${BACKEND_URL}/checklist`);        const result = await response.json();
         setChecklistData(result.data);
       } catch (error) {
         console.error('Error fetching checklist data:', error);

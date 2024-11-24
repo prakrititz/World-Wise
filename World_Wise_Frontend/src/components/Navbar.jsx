@@ -2,6 +2,8 @@ import React from "react";
 import { Link,useNavigate,useSearchParams} from "react-router-dom";
 import UserMenu from "./UserMenu";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Navbar = () => {
 
   const [user, setUser] = React.useState(null);
@@ -36,7 +38,7 @@ const Navbar = () => {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/auth/check', {
+      const response = await fetch(`${BACKEND_URL}/api/auth/check`, {
         credentials: 'include'
       });
       const data = await response.json();
@@ -54,12 +56,12 @@ const Navbar = () => {
   };
 
   const login = () => {
-    window.location.href = 'http://localhost:8000/api/auth/google';
+    window.location.href = `${BACKEND_URL}/api/auth/google`;
   };
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:8000/api/auth/logout', {
+      await fetch(`${BACKEND_URL}/api/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       });

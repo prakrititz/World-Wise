@@ -1,5 +1,7 @@
 import React from "react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Footer = () => {
   return (
     <footer className="bg-[#232f3e] text-[#f2f2f2] py-6">

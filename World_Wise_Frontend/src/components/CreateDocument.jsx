@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FileText, Package, Truck, FileCheck, Globe, Shield, X, Download, AlertCircle } from 'lucide-react';
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const documents = [
   {
     id: 1,

@@ -5,6 +5,8 @@ import { ArrowLeft } from 'lucide-react';
 import IECdata from "./IEC.json";
 import RCMCdata from "./RCMC.json";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const DetailedGuide = () => {
   const { stepName } = useParams();
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const DetailedGuide = () => {
   useEffect(() => {
     const fetchDetailedGuide = async () => {
       try {
-        const response = await fetch('http://localhost:8000/detailed-guide', {
+        const response = await fetch(`${BACKEND_URL}/detailed-guide`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

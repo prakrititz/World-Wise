@@ -4,14 +4,13 @@ import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import Features from "./Features";
 import StepGuide from "./StepGuide";
-import ExportBuddy from "./ExportBuddy";
 import Footer from "./Footer";
 import Checklist from "./Checklist";
 import CreateDocument from "./CreateDocument";
 import DetailedGuide from "./DetailedGuide";
 import AiPredictionML from "./AiPredictionML";
 import "./App.css"
-import IncentiveFinder from "./IncentiveFinder";
+import IncentiveFinder from "./incentivefinder";
 import Summarize from "./Summarize";
 import Negotiation from './Negotiation';
 

@@ -1,6 +1,8 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function UserMenu({ user, logout }) {
   return (
     <Menu as="div" className="relative">

@@ -3,6 +3,8 @@ import { Upload, FileText, ArrowLeft, Info } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Summarize = () => {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
@@ -20,7 +22,7 @@ const Summarize = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/summarize', {
+      const response = await fetch(`${BACKEND_URL}/summarize`, {
         method: 'POST',
         body: formData
       });

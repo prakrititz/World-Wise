@@ -1,6 +1,8 @@
 import React from "react";
 import { FaRoute, FaRobot, FaFileContract, FaChartLine } from "react-icons/fa";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Features = () => {
   const features = [
     { icon: <FaRoute className="w-8 h-8" />, title: "Step-by-step Export Guidance", description: "Clear pathways and detailed guidance for successful international trade" },

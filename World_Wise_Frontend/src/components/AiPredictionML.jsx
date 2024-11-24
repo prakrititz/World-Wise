@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, AlertTriangle, CheckCircle, Info, Globe, TrendingUp, Shield } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const Spinner = () => (
   <div className="flex justify-center items-center">
     <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#ff9900]"></div>
@@ -26,8 +26,7 @@ const AiPredictionML = () => {
     setLoading(true);
     
     try {
-      const response = await fetch('http://localhost:8000/risk-analysis', {
-        method: 'POST',
+      const response = await fetch(`${BACKEND_URL}/risk-analysis`, {        method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'

@@ -1,5 +1,7 @@
 import React from "react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const StepGuide = () => {
   const steps = [
     {

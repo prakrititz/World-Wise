@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { DollarSign } from 'lucide-react';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Negotiation = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,7 +22,7 @@ const Negotiation = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/negotiation', {
+      const response = await fetch(`${BACKEND_URL}/negotiation`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,9 +112,3 @@ const Negotiation = () => {
 };
 
 export default Negotiation;
-
-
-
-// In your routes
-
-

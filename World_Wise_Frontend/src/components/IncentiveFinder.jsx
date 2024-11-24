@@ -3,6 +3,8 @@ import { Search, HelpCircle, Info, ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const IncentiveFinder = () => {
   const [query, setQuery] = useState('');
   const [result, setResult] = useState(null);
@@ -13,7 +15,7 @@ const IncentiveFinder = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/incentives', {
+      const response = await fetch(`${BACKEND_URL}/incentives`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

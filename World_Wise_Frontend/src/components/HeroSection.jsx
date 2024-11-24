@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap"; // First install GSAP: npm install gsap
 import { useNavigate } from "react-router-dom";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const HeroSection = () => {
   const mapRef = useRef(null);
   const navRef = useRef(null);
