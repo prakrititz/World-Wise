@@ -9,7 +9,7 @@ import pandas as pd
 import joblib
 from fuzzywuzzy import process
 from test import *
-
+from incentive_finder import IncentiveFinder
 modelRisk_path = 'export_risk_model.joblib'
 modelRisk = joblib.load(modelRisk_path)
 
@@ -27,6 +27,9 @@ app = FastAPI()
 class GuideRequest(BaseModel):
     step_name: str
 # Configure CORS
+class IncentiveQuery(BaseModel):
+    query: str
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
@@ -144,6 +147,20 @@ def generate_export_response(user_message: str) -> str:
         raise
 class RiskAnalysisRequest(BaseModel):
     country: str
+
+
+@app.post("/incentives")
+async def get_incentives(query: IncentiveQuery):
+    try:
+        finder = IncentiveFinder("AIzaSyAQwgGMrY-Ez-02A4Dn7t2X2dRbTgD27QQ")
+        result = finder.find_incentives(query.query)
+        return {"response": result}
+    except Exception as e:
+        logger.error(f"Error in incentives endpoint: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"An error occurred: {str(e)}"
+        )
 
 
 @app.post("/risk-analysis")

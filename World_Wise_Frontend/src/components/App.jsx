@@ -11,6 +11,8 @@ import CreateDocument from "./CreateDocument";
 import DetailedGuide from "./DetailedGuide";
 import AiPredictionML from "./AiPredictionML";
 import "./App.css"
+import IncentiveFinder from "./incentivefinder";
+
 
 const App = () => {
   return (
@@ -25,6 +27,7 @@ const App = () => {
           <Route path="/create-document" element={<CreateDocument/>} />
           <Route path="/detailed-guide/:stepName" element={<DetailedGuide />} />
           <Route path="/risk-analysis" element={<AiPredictionML />} />
+          <Route path="/incentives" element={<IncentiveFinder />} />
         </Routes>
         <Footer />
       </div>

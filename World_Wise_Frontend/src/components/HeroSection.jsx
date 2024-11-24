@@ -249,21 +249,28 @@ const HeroSection = () => {
 
         <div className="space-x-4">
         <button 
-            onClick={() => navigate('/checklist')}
-            className="bg-[#ff9900] text-[#000000] px-8 py-3 rounded-full font-bold hover:bg-[#146eb4] hover:text-[#f2f2f2] transition duration-300"
+            onClick={() => navigate('/Dummy')}
+            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
           >
-            Get Started
+            PathWise Guidance
           </button>
           <button 
-            className="border-2 border-[#f2f2f2] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#146eb4] hover:border-[#146eb4] transition duration-300"
+            onClick={() => navigate('/risk-analysis')}
+            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
           >
-            Learn More
+            Risk Calculation
           </button>
           <button 
             onClick={() => navigate('/create-document')}
             className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
           >
-            Create Export Documents
+            Export Documents Templates
+          </button>
+          <button 
+            onClick={() => navigate('/incentives')}
+            className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
+          >
+            Get Incentives
           </button>
           
         </div>
