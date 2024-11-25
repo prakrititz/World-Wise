@@ -10,7 +10,7 @@ import CreateDocument from "./CreateDocument";
 import DetailedGuide from "./DetailedGuide";
 import AiPredictionML from "./AiPredictionML";
 import "./App.css"
-import IncentiveFinder from "./incentivefinder";
+import IncentiveFinder from "./IncentiveFinder";
 import Summarize from "./Summarize";
 import Negotiation from './Negotiation';
 
