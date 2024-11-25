@@ -9,7 +9,7 @@ class IncentiveFinder:
         
     def load_incentives(self):
         try:
-            with open('incentives.txt', 'r', encoding='utf-8') as file:
+            with open('Incentives.txt', 'r', encoding='utf-8') as file:
                 return file.read()
         except FileNotFoundError:
             return None
