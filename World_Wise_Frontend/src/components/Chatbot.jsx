@@ -8,6 +8,7 @@ function ChatBot(){
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
  const handleChatSubmit = async (e) => {
     e.preventDefault();
