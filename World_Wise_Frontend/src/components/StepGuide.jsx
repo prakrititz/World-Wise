@@ -1,5 +1,5 @@
 import React from "react";
-import Chatbt from "./Chatbot;
+import Chatbt from "./Chatbot";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
