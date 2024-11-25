@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/create-document" element={<CreateDocument/>} />
           <Route path="/detailed-guide/:stepName" element={<DetailedGuide />} />
           <Route path="/risk-analysis" element={<AiPredictionML />} />
-          <Route path="/incentives" element={<IncentiveFinder />} />
+          <Route path="/get-incentives" element={<IncentiveFinder />} />
           <Route path="/summarize" element={<Summarize />} />
           <Route path="/negotiation" element={<Negotiation />} />
         </Routes>
