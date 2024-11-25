@@ -7,6 +7,7 @@ function ChatBot(){
   const [showChat, setShowChat] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
  const handleChatSubmit = async (e) => {
     e.preventDefault();
