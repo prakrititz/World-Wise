@@ -1,7 +1,7 @@
 <div align="center">
 
 # **_World Wise 🌍_**  
-### **_Simplifying Global Trade_**
+### **_Your First Export Simplified_**
 
 </div>
 
