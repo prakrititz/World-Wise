@@ -82,7 +82,7 @@ const Navbar = () => {
           <Link to="/" className="hover:text-[#ff9900] transition-colors">Home</Link>
           <Link to="/guide" className="hover:text-[#ff9900] transition-colors">Step-by-Step</Link>
          {/* <Link to="/ai-companion" className="hover:text-[#ff9900] transition-colors">AI Companion</Link>*/}
-          <Link to="/contact" className="hover:text-[#ff9900] transition-colors">Contact</Link>
+          {/*<Link to="/contact" className="hover:text-[#ff9900] transition-colors">Contact</Link>*/}
           {user?<UserMenu user={user} logout={logout}/>:<button 
             onClick={() => login()} 
             className="bg-[#146eb4] text-[#f2f2f2] px-4 py-1 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
