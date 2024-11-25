@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Upload, FileText, ArrowLeft, Info } from 'lucide-react';
+import Chatbot from "./Chatbot";
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 
@@ -145,6 +146,7 @@ const Summarize = () => {
           )}
         </div>
       </div>
+      <Chatbot/>
     </div>
   );
 };
