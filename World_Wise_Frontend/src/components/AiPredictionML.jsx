@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, AlertTriangle, CheckCircle, Info, Globe, TrendingUp, Shield } from 'lucide-react';
+import Chatbot from "./Chatbot";
 import ReactMarkdown from 'react-markdown';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const Spinner = () => (
@@ -162,6 +163,7 @@ const AiPredictionML = () => {
           </div>
         )}
       </div>
+      <Chatbot/>
     </div>
   );
 };
