@@ -487,7 +487,7 @@ const HeroSection = () => {
         </button>
       </div>
     </div>
-    <Chatbot/>
+    <ChatBot/>
   </div>
 );
 };
