@@ -118,7 +118,7 @@ return(
               <div className="p-4 border-b border-[#146eb4] flex justify-between items-center bg-[#146eb4] rounded-t-xl">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-full bg-[#f2f2f2] flex items-center justify-center">
-                    <span className="text-[#146eb4] text-xl font-bold">A</span>
+                    <span className="text-[#146eb4] text-xl font-bold"><img src="/images/ai-bot.png" className="rounded"/></span>
                   </div>
                   <div>
                     <h3 className="font-bold text-[#f2f2f2]">Export Assistant</h3>
