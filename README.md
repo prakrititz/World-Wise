@@ -39,7 +39,7 @@ A detailed 19-step guide simplifies the export process with explanations of esse
 
 ```bash
 # Step 1: Unzip the World_Wise.zip file
-unzip World_Wise.zip
+unzip World-Wise.zip
 
 # Step 2: Navigate to the project directory
 cd World-Wise
