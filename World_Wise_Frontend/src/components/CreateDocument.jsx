@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Package, Truck, FileCheck, Globe, Shield, X, Download, AlertCircle } from 'lucide-react';
+import Chatbot from "./Chatbot";
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const documents = [
   {
@@ -258,6 +260,7 @@ const CreateDocument = () => {
           onClose={() => setPreviewImage(null)}
         />
       )}
+      <Chatbot/>
     </div>
   );
 };
