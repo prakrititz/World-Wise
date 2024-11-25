@@ -35,8 +35,36 @@ A detailed 19-step guide simplifies the export process with explanations of esse
 
 ---
 
-## **_Why World_Wise?_**  
-Exporting should be an opportunity, not a challenge.  
-*World_Wise* empowers exporters with tools that cut through complexities, providing clarity and actionable insights at every step. Whether you're a new exporter or a seasoned professional, our platform ensures success in global trade.
+## **_Instructions to Run the Code Locally_**
 
-</div>
+```bash
+# Step 1: Unzip the World_Wise.zip file
+unzip World_Wise.zip
+
+# Step 2: Navigate to the project directory
+cd World-Wise
+
+# Step 3: Move to the backend directory
+cd World_Wise_Backend
+
+# Step 4: Enter your Groq and Gemini API keys in the .env file
+
+# Step 5: Install backend dependencies
+pip install -r requirements.txt
+
+# Step 6: Run the backend server
+uvicorn main:app --reload
+
+# Step 7: Navigate to the frontend directory
+cd ../World_Wise_Frontend
+
+# Step 8: Install frontend dependencies
+npm i
+
+# Step 9: Start the frontend server
+npm run dev
+
+# Step 10: Copy the frontend URL (e.g., http://localhost:5173) 
+# and paste it into the .env file in World_Wise_Backend against the FRONTEND_URL variable.
+
+# Step 11: Open the frontend URL in your browser.
