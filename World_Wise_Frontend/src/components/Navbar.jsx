@@ -56,6 +56,7 @@ const Navbar = () => {
   };
 
   const login = () => {
+    console.log(BACKEND_URL);
     window.location.href = `${BACKEND_URL}/api/auth/google`;
   };
 
