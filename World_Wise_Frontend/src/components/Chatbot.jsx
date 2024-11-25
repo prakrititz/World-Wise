@@ -169,7 +169,7 @@ return(
               className="transform transition-all duration-300 hover:scale-110"
             >
               <div className="w-16 h-16 rounded-full bg-[#ff9900] flex items-center justify-center shadow-xl hover:bg-[#146eb4] transition-colors">
-                <span className="text-[#232f3e] hover:text-[#f2f2f2] text-2xl font-bold">A</span>
+                <span className="text-[#232f3e] hover:text-[#f2f2f2] text-2xl font-bold"><img src="/images/ai-bot.png" className="rounded"/></span>
               </div>
             </button>
           )}
