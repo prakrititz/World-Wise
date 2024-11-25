@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, HelpCircle, Info, ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import Chatbot from "./Chabot";
+import Chatbot from "./Chatbot";
 import { Link } from 'react-router-dom';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
