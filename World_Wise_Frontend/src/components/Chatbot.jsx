@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Trophy, CheckCircle2, Lock, X, ChevronRight, Award } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,16 @@ function ChatBot(){
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
  const handleChatSubmit = async (e) => {
     e.preventDefault();
@@ -84,6 +93,7 @@ function ChatBot(){
           )}
         </div>
       ))}
+      <div ref={messagesEndRef} />
     </div>
   );
   
