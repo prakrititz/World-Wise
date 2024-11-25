@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DollarSign } from 'lucide-react';
+import Chatbot from "./Chatbot";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -107,6 +108,7 @@ const Negotiation = () => {
           </div>
         )}
       </div>
+      <Chatbot/>
     </div>
   );
 };
