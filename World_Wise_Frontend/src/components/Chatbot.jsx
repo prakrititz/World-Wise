@@ -174,4 +174,4 @@ return(
         </div>);
 }
 
-export default Chatbot;
+export default ChatBot;
