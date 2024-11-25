@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, {useState, useEffect, useRef } from "react";
 import { gsap } from "gsap"; // First install GSAP: npm install gsap
 import { useNavigate } from "react-router-dom";
 
