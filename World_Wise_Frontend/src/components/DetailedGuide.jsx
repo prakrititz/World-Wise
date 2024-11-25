@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { ArrowLeft } from 'lucide-react';
 import IECdata from "./IEC.json";
 import RCMCdata from "./RCMC.json";
+import Chatbot from "./Chatbot"
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -172,6 +173,7 @@ const DetailedGuide = () => {
           )}
         </div>
       </div>
+      <Chatbot/>
     </div>
   );
 };
