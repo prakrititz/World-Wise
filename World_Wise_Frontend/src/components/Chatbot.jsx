@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Trophy, CheckCircle2, Lock, X, ChevronRight, Award } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useNavigate } from 'react-router-dom';
- 
-const handleChatSubmit = async (e) => {
+
+function ChatBot(){
+  const [showChat, setShowChat] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+
+ const handleChatSubmit = async (e) => {
     e.preventDefault();
     if (input.trim()) {
       // Add user message
@@ -103,11 +108,6 @@ const handleChatSubmit = async (e) => {
     );
   };
 
-
-function ChatBot(){
-  const [showChat, setShowChat] = useState(false);
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
 
 return(
  <div className="fixed bottom-8 right-8 z-50">
