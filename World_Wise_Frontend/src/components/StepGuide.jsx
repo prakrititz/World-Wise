@@ -1,4 +1,5 @@
 import React from "react";
+import Chatbt from "./Chatbot;
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -44,6 +45,7 @@ const StepGuide = () => {
           </div>
         ))}
       </div>
+      <Chatbot/>
     </div>
   );
 };
