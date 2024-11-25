@@ -30,11 +30,11 @@ const Navbar = () => {
   }, [searchParams, navigate]);
 
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     if (user === null && !loading) {
       navigate('/');
     }
-  }, [user, loading, navigate]);
+  }, [user, loading, navigate]);*/
 
   const checkAuthStatus = async () => {
     try {
