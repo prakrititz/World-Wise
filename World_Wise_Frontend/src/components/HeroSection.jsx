@@ -295,7 +295,7 @@ const HeroSection = () => {
           Export Documents Templates
         </button>
         <button 
-          onClick={() => navigate('/incentives')}
+          onClick={() => navigate('/get-incentives')}
           className="bg-[#146eb4] text-[#f2f2f2] px-8 py-3 rounded-full font-bold hover:bg-[#ff9900] hover:text-[#000000] transition duration-300"
         >
           Get Incentives
