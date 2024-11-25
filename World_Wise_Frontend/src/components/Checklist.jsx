@@ -233,15 +233,15 @@ function Checklist() {
       <ReactMarkdown 
         className="prose prose-sm prose-invert max-w-none"
         components={{
-          h1: ({node, ...props}) => <h1 className="text-lg font-bold mb-2" {...props} />,
-          h2: ({node, ...props}) => <h2 className="text-md font-bold mb-2" {...props} />,
-          h3: ({node, ...props}) => <h3 className="text-sm font-bold mb-1" {...props} />,
-          p: ({node, ...props}) => <p className="mb-2 text-sm" {...props} />,
-          ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2" {...props} />,
-          ol: ({node, ...props}) => <ol className="list-decimal pl-4 mb-2" {...props} />,
-          li: ({node, ...props}) => <li className="mb-1" {...props} />,
-          code: ({node, ...props}) => <code className="bg-gray-800 px-1 rounded" {...props} />,
-          strong: ({node, ...props}) => <strong className="font-bold text-blue-300" {...props} />
+          h1: ({node, ...props}) => <h1 className="bg-white text-lg font-bold mb-2" {...props} />,
+          h2: ({node, ...props}) => <h2 className="bg-white text-md font-bold mb-2" {...props} />,
+          h3: ({node, ...props}) => <h3 className="bg-white text-sm font-bold mb-1" {...props} />,
+          p: ({node, ...props}) => <p className="bg-white mb-2 text-sm" {...props} />,
+          ul: ({node, ...props}) => <ul className="bg-white list-disc pl-4 mb-2" {...props} />,
+          ol: ({node, ...props}) => <ol className="bg-white list-decimal pl-4 mb-2" {...props} />,
+          li: ({node, ...props}) => <li className="bg-white mb-1" {...props} />,
+          code: ({node, ...props}) => <code className="bg-white px-1 rounded" {...props} />,
+          strong: ({node, ...props}) => <strong className="bg-white font-bold text-blue-300" {...props} />
         }}
       >
         {content}
