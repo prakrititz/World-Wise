@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap"; // First install GSAP: npm install gsap
 import { useNavigate } from "react-router-dom";
+import Chatbot from "./Chatbot.jsx"
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -314,6 +315,7 @@ const HeroSection = () => {
         </button>
       </div>
     </div>
+    <Chatbot/>
   </div>
 );
 };
