@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Trophy, CheckCircle2, Lock, X, ChevronRight, Award } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useNavigate } from 'react-router-dom';
@@ -135,6 +135,16 @@ function Checklist() {
   const [completedItems, setCompletedItems] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [checklistData, setChecklistData] = useState([]);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+  
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     const fetchChecklistData = async () => {
@@ -223,6 +233,7 @@ function Checklist() {
           )}
         </div>
       ))}
+      <div ref={messagesEndRef} />
     </div>
   );
   
